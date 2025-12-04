@@ -7,77 +7,72 @@ body {
   margin-left: auto;
   width: 100%;
   max-width: 1200px;
-  /* border: 1px solid grey; */
+  /* border: 1px solid grey; */ 
 }
 
+/* grid lines */
 .y-grid .tick line {
-  stroke: #cccccc;     /* helles Grau */
-  stroke-opacity: 0.5; /* Transparenz */
+  stroke: #cccccc; 
+  stroke-opacity: 0.5; /* transparency */
   stroke-width: 2;
 }
 
-/* senkrechte Achsenlinie verstecken */
- /* .y-grid path.domain { 
-  stroke: none;   
- }   */
-
- /* größere Charts → größere Schrift */
+/* labels/values in axis */
 .largeChart .axis text {
   font-size: 16px;
   font-weight: bold;
 }
 
-/* Tooltip-Stil */
+/* tooltip style */
 .tooltip {
-
-  font-size: 14px !important;  /* Setze die Schriftgröße des Tooltips */
-  background-color: rgba(0, 0, 0, 0.8); /* Hintergrundfarbe */
-  color: #fff;  /* Textfarbe */
-  padding: 5px;  /* Padding */
-  border-radius: 3px;  /* Abgerundete Ecken */
-  visibility: hidden;  /* Standardmäßig unsichtbar */
-  position: absolute;  /* Positionierung */
+  font-size: 14px ;  
+  background-color: rgba(0, 0, 0, 0.8); 
+  color: #fff;  
+  padding: 5px;  
+  border-radius: 3px;  
+  visibility: hidden; 
+  position: absolute; 
 }
 
+/* axis titles */
 .axis-label {
   font-family: Arial, sans-serif;
   font-weight: bold;
-  fill: black; /* Farbe des Titels */
+  fill: black; 
 }
 
-/* Stil für das Dropdown-Feld selbst */
+/* dropdown menu */
 #selectButton {
-  font-size: 16px; /* Beispielgröße: Passen Sie diese an */
+  font-size: 16px;
   font-weight: bold;
-  padding: 5px;   /* Optional: Verbessert die Klickfläche */
+  padding: 5px;  
   border-radius: 5px;
   border-width: 2px;
   border-color: black;
 }
 
-/* Stil für die Optionen im Dropdown (wird oft vom <select> geerbt, aber explizit ist besser) */
+/* options in dropdown menu */
 #selectButton option {
-  font-size: 16px; /* Stellt sicher, dass auch die Texte in der Liste die Größe haben */
+  font-size: 16px; 
 }
 
-/* Stil für das Label */
-/* Es hat keinen spezifischen Selektor, also sprechen wir das Label im Form-Container an */
+/* text next to dropdown menu */
 #form label {
-  font-size: 16px; /* Beispielgröße: Passen Sie diese an */
+  font-size: 16px; 
   font-weight: bold; 
 }
 
-/* Erhöht die Dicke der Hauptlinie der X-Achse (Domain Line) */
+/* domain line of x-axis */
 .x-axis .domain {
     stroke-width: 2px;
 }
 
-/* Erhöht die Dicke der Hauptlinie der Y-Achse */
+/* domain line of y-axis */
 .y-axis .domain {
     stroke-width: 2px;
 }
 
-/* Ändert die Dicke der kleinen Tick-Markierungen auf der X- und Y-Achse */
+/* tick lines */
 .axis line {
-    stroke-width: 2px; /* Etwas dicker als der Standardwert (meist 1px) */
+    stroke-width: 2px; 
 }
