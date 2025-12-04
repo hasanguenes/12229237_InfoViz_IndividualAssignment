@@ -101,12 +101,15 @@ const createBarChart = (data, initialNeighborhood) => {
     // initializing groups for bars, axes, grid
     const barsG = svg.append("g")
         .attr("id", "bars");
+
     const yAxisG = svg.append("g")
         .attr("transform", `translate(${margins.left}, 0)`)
         .attr("class", "axis y-axis");
+
     const xAxisG = svg.append("g")
         .attr("transform", `translate(0, ${height - margins.bottom})`)
         .attr("class", "axis x-axis");
+
     const yGridG = svg.append("g")
         .attr("class", "y-grid")
         .attr("transform", `translate(${margins.left}, 0)`);
@@ -116,10 +119,12 @@ const createBarChart = (data, initialNeighborhood) => {
 
     // y-axis and grid lines
     const maxTicksInitial = Math.min(d3.max(initialBins, d => d.length) || 0, 10);
+
     yAxisG
         .call(d3.axisLeft(yScale)
         .ticks(maxTicksInitial)
         .tickFormat(d3.format("d")));
+
     yGridG
         .call(d3.axisLeft(yScale)
         .ticks(maxTicksInitial)
@@ -131,10 +136,12 @@ const createBarChart = (data, initialNeighborhood) => {
         .selectAll(".tick text")
         .style("text-anchor", "middle")
         .attr("dy", "1em");
+
     yGridG
         .selectAll(".tick")
         .filter(d => d === 0)
         .select("line").remove();
+
     yGridG
         .select(".domain")
         .remove();
@@ -175,7 +182,6 @@ const createBarChart = (data, initialNeighborhood) => {
     // binding of event listeners to bars (for tooltip)
     bar.on("mouseover", mouseover)
        .on("mouseout", mouseout);
-
     
     // helper function for creating tooltips at mouseover event
     function mouseover(event, d) {
@@ -202,6 +208,7 @@ const createBarChart = (data, initialNeighborhood) => {
     // helper function for removing tooltips at mouseout event
     function mouseout(event, d) {
         tooltip.style("visibility", "hidden");
+
         d3.select(this)
             .attr("stroke", null);
     }
@@ -226,14 +233,15 @@ const createBarChart = (data, initialNeighborhood) => {
 
         // prepare data
         const bins = computeBinsForNeighborhood(neighborhood);
+        // define transition with specific duration
         const t = d3.transition().duration(duration);
 
-        // 2. update y-domain and grids
+        // update y-domain and grids
         const maxCount = d3.max(bins, d => d.length) || 0;
         yScale.domain([0, maxCount]).nice();
         const maxTicks = Math.min(maxCount, 10);
 
-        // update y axis and grid lines
+        // update y-axis and grid lines
         yAxisG.transition(t)
             .call(d3.axisLeft(yScale)
             .ticks(maxTicks)
@@ -255,7 +263,7 @@ const createBarChart = (data, initialNeighborhood) => {
         yGridG.select(".domain")
             .remove();
         
-        // 3. update bars ( enter / update / exit)
+        // update bars ( enter / update / exit)
         bar = barsG.selectAll("rect")
             .data(bins, (d, i) => categories[i]) 
             .join(
