@@ -1,6 +1,11 @@
 # 12229237_InfoViz_IndividualAssignment
 D3 Visualization of Chicago Airbnb price distribution per neighborhood 
 
+## Access to Webpage
+
+Link for direct access to webpage: 
+https://hasanguenes.github.io/12229237_InfoViz_IndividualAssignment/
+
 ## Used Sources for Implementation
 
 When implementing the visualization, I mainly focused on following the structure of the solution to the d3 tutorial for the bar chart with interaction, provided by the lecture team. For this reason, all references mentioned in the solution file of the tutorial are also used here, implicitly.
