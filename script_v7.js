@@ -290,5 +290,3 @@ const createBarChart = (data, initialNeighborhood) => {
         xAxisTitle.text(`Price per Night ($) in ${neighborhood}`);
     }
 };
-
-// TODO:  documenting use of gen ai / extern source files
