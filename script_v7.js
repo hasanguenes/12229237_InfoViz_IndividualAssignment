@@ -1,9 +1,8 @@
-// -------- GLOBALE KONSTANTEN UND TOOLTIP --------
-
+// -------- GLOBAL VARIABLES / CONSTANTS --------
 const tooltip = d3.select("body").append("div")
   .attr("class", "tooltip")
   .style("position", "absolute")
-  .style("visibility", "hidden");  // Startet als unsichtbar
+  .style("visibility", "hidden");  // hidden in default
 
 // -------- INITIALIZING DATA --------
 d3.csv("./vis_data.csv", d => {
@@ -15,13 +14,14 @@ d3.csv("./vis_data.csv", d => {
     console.log("Data loaded:");
     console.log(data);
   
-    // Alle Nachbarschaften extrahieren und sortieren
+    // get all neighborhoods sorted by alphabetical order
     const allNeighborhoods = Array.from(new Set(data.map(d => d.neighborhood))).sort(d3.ascending);
+    // initial neighborhood is first one
     const initialNeighborhood = allNeighborhoods[0];
 
     console.log("Initial Neighborhood:", initialNeighborhood);
 
-    // Dropdown füllen
+    // fill dropdown options with all neighborhoods
     d3.select("#selectButton")
       .selectAll('option')
       .data(allNeighborhoods)
@@ -30,10 +30,10 @@ d3.csv("./vis_data.csv", d => {
         .text(d => d)
         .attr("value", d => d);
 
-    // Set dropdown value to first neighborhood in data
+    // set dropdown value to first neighborhood in data
     d3.select("#selectButton").property("value", initialNeighborhood);
 
-    // Initialen Aufruf der Chart-Funktion
+    // create bar chart
     createBarChart(data, initialNeighborhood);
 });
 
@@ -41,19 +41,19 @@ d3.csv("./vis_data.csv", d => {
 
 const createBarChart = (data, initialNeighborhood) => {
     
-    // --- LOKALE LAYOUT-VARIABLEN & PARAMETER ---
+    // --- LOCAL LAYOUT PARAMETERS AND CONSTANTS ---
     const width = 1200, height = 500;
     const margins = {top: 30, right: 30, bottom: 70, left: 60};
 
-    const duration = 2000;
-    const padding = 0.5;
-    const innerWidth = width - margins.left - margins.right;
-    const ax_title_font = "22px";
+    const duration = 2000; // for transisiton of plot
+    const padding = 0.5; // for padding between bars
+    const innerWidth = width - margins.left - margins.right; // width of grid lines
+    const ax_title_font = "22px"; // defines title font size of axis
     
     const lowerLimit = 0;
     const upperLimit = 500;
-    const overflowLimit = 520;
-    const binWidth = 50;
+    const overflowLimit = 500; // defines last bin including all prices over this value
+    const binWidth = 50; // deifnes prices range of one bin
 
     // --- Binning-Funktion ---
     const bin = d3.bin()
