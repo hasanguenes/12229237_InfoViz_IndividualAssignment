@@ -233,7 +233,7 @@ const createBarChart = (data, initialNeighborhood) => {
         yScale.domain([0, maxCount]).nice();
         const maxTicks = Math.min(maxCount, 10);
 
-        // Y-Achse und Grid aktualisieren
+        // update y axis and grid lines
         yAxisG.transition(t)
             .call(d3.axisLeft(yScale)
             .ticks(maxTicks)
@@ -291,4 +291,4 @@ const createBarChart = (data, initialNeighborhood) => {
     }
 };
 
-// TODO: correct documentation + documenting use of gen ai
+// TODO:  documenting use of gen ai / extern source files
